@@ -55,6 +55,10 @@ public class Stream1 {
         System.out.println(Stream.concat(list1.stream(),list2.stream()).sorted().toList());
     }
 
+    public void addGreaterAverageElement(){
+
+    }
+
     static void main() {
 //        findLongestStrings();
 //        calculateAverageOfPerson();
