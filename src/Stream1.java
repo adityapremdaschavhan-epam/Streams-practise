@@ -1,7 +1,8 @@
-import org.w3c.dom.ls.LSOutput;
+//import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
 import java.util.stream.Stream;
+//import java.lang.classNotFoundException;
 
 record Person(String name, int age){}
 
@@ -55,14 +56,28 @@ public class Stream1 {
         System.out.println(Stream.concat(list1.stream(),list2.stream()).sorted().toList());
     }
 
-    public void addGreaterAverageElement(){
+    public static void addGreaterAverageElement(){
+      List<Integer> list = Arrays.asList(1,5,2,3,4,5,5,32,3);
+    }
 
+    //Find the intersection of two lists using Java streams:
+    public static void findIntersection(){
+      List<Integer> list1 = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+      List<Integer> list2 = Arrays.asList(5,6,7,8,9,10,11,12,13,14,15);
+      list1.stream().filter(list2::contains).forEach(n-> System.out.println(n));
+    }
+
+    //Remove duplicates from a list while preserving the order using Java streams:
+    public Static void removeduplicatesPreservingOrder(){
+        List<Integer> list = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 5);
+        list.stream().distinct().collect(Collectors.to)
     }
 
     static void main() {
 //        findLongestStrings();
 //        calculateAverageOfPerson();
 //        MergeTwoSorted();
+//         findIntersection();
 
     }
 }
