@@ -6,6 +6,10 @@ record Transaction(String date,int amount){}
 
 public class Stream2 {
 
+    public static void utility(){
+        System.out.println("I am utility use me wisely");
+    }
+
     // Find the longest string in a list of strings using Java streams:
     public static void findLongestStrings(){
         List<String>  list = Arrays.asList("apple", "banana", "cherry", "date", "grapefruit");
@@ -119,7 +123,55 @@ public class Stream2 {
         System.out.println(list);
     }
 
+//    Check if a List Contains a Specific Element/
+     public static void checkList(){
+         List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+         int element1 = 4;
+         int element2 = 8;
+         System.out.println(numbers.stream().anyMatch(n->n==element1));
+         System.out.println(numbers.stream().anyMatch(n->n==element2));
+     }
+//      Find the Last Element in a List
+    public static void findLast(){
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        int last = numbers.stream().reduce((a,b)->b).get();
+        System.out.println(last);
+    }
+
+//    Check if All Elements in a List Satisfy a Condition
+//    public static void checkAllElement(){
+//        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+//        int allElement = numbers.stream().allMatch(n->n%2==0);
+//        System.out.println(allElement);
+//    }
+
+
+
+//    Q1. Given a List<String>, return a list of strings that: have length > 5
+//    are converted to uppercase
+//    sorted alphabetically
+    public static void stringMauplation(){
+        List<String> words = Arrays.asList("apple", "banana", "Avocado", "cherry", "apricot", "Berry");
+        System.out.println(words.stream().filter(n->n.length()>5).map(n->n.toUpperCase()).sorted().collect(Collectors.toList()));
+    }
+
+    // Find the Sum of Digits of a Number
+
+    public static void findSumDigit(){
+        int number = 1234;
+        int sum = String.valueOf(number).chars().map(c->c-'0').sum();
+        int sum2 = String.valueOf(number).chars().map(Character::getNumericValue).reduce(0,(a,b)->a+b);
+        System.out.println(sum2);
+    }
+    // Find the Second-Largest Element in a List
+    public static void findSecondLargest(){
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        System.out.println(numbers.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get());
+        List<String> words = List.of("apple", "banana", "kiwi");
+        System.out.println(words.stream().sorted(Comparator.comparingInt(String::length).reversed()).findFirst().get());
+    }
     static void main() {
+        utility();
 //        findLongestStrings();
 //        calculateAverageOfPerson();
 //        MergeTwoSorted();
@@ -128,8 +180,15 @@ public class Stream2 {
 //        sumTransactions();
 //        kSmallest();
 //        findFrequency();
-//            partitionList();
-        findStringConvertCase();
-    }
+//         partitionList();
+//        findStringConvertCase();
+//        29-01-26
+//        checkList();
+//        findLast();
+//        checkAllElement();
+//          stringMauplation();
+//            findSumDigit();
+            findSecondLargest();
 
+    }
 }
